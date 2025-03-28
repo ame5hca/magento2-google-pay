@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Api\GuestPaymentInformationManagementInterface">
+        <plugin name="guest_googlepay_authnet_transaction_execute" type="GiftGroup\GooglePay\Plugin\Checkout\GuestPaymentInformationManagementInterface" sortOrder="1" disabled="false" />
+    </type>
+    <type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
+        <plugin name="customer_googlepay_authnet_transaction_execute" type="GiftGroup\GooglePay\Plugin\Checkout\PaymentInformationManagementInterface" sortOrder="1" disabled="false" />
+    </type>
+    <type name="GiftGroup\GooglePay\Logger\Handler">
+        <arguments>
+            <argument name="filesystem"
+                xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="GiftGroup\GooglePay\Logger\Logger">
+        <arguments>
+            <argument name="name"
+                xsi:type="string">googlepay_error</argument>
+            <argument name="handlers"
+                xsi:type="array">
+                <item name="system"
+                    xsi:type="object">GiftGroup\GooglePay\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
